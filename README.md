@@ -2,6 +2,28 @@
 
 A full-stack web application for managing laundry orders with staff authentication and MongoDB data persistence.
 
+---
+
+## 🚀 Live Demo
+
+**Deployed on Render:** https://laundry-order-manangement.onrender.com/
+
+**Test Credentials:**
+```
+Username: Admin
+Password: Admin@123
+```
+
+**Quick Testing Guide:**
+1. Visit the link above
+2. Click "Register here" or use test credentials to login
+3. Create an order with garments and special instructions
+4. View orders with filters
+5. Update order status and delete orders
+6. Check dashboard for statistics
+
+---
+
 ## Features
 
 ### Authentication & Security
