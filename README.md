@@ -10,7 +10,7 @@ A full-stack web application for managing laundry orders with staff authenticati
 
 **Test Credentials:**
 ```
-Username: Admin
+Username: admin
 Password: Admin@123
 ```
 
