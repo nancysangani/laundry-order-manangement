@@ -1,0 +1,236 @@
+{
+  "info": {
+    "name": "Quick Dry Cleaning API",
+    "description": "REST API for Laundry Order Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/dashboard",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "dashboard"]
+        },
+        "description": "Get overall dashboard statistics"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Garments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/garments",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "garments"]
+        },
+        "description": "Get available garments and their prices"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Raj Kumar\",\n  \"phoneNumber\": \"+91-9876543210\",\n  \"garments\": [\n    {\"name\": \"Shirt\", \"quantity\": 2},\n    {\"name\": \"Pants\", \"quantity\": 1},\n    {\"name\": \"Saree\", \"quantity\": 1}\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders"]
+        },
+        "description": "Create a new order"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders"]
+        },
+        "description": "Get all orders without filters"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Orders - Filter by Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/orders?status=READY",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders"],
+          "query": [
+            {
+              "key": "status",
+              "value": "READY"
+            }
+          ]
+        },
+        "description": "Filter orders by status (RECEIVED, PROCESSING, READY, DELIVERED)"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Orders - Filter by Customer Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/orders?customerName=Raj",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders"],
+          "query": [
+            {
+              "key": "customerName",
+              "value": "Raj"
+            }
+          ]
+        },
+        "description": "Filter orders by customer name (fuzzy search)"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Orders - Filter by Phone",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/orders?phoneNumber=9876",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders"],
+          "query": [
+            {
+              "key": "phoneNumber",
+              "value": "9876"
+            }
+          ]
+        },
+        "description": "Filter orders by phone number (partial match)"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Order",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/orders/a1b2c3d4",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders", "a1b2c3d4"]
+        },
+        "description": "Get a specific order by ID. Replace 'a1b2c3d4' with actual order ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Order Status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"PROCESSING\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/orders/a1b2c3d4/status",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders", "a1b2c3d4", "status"]
+        },
+        "description": "Update order status. Valid values: RECEIVED, PROCESSING, READY, DELIVERED. Replace 'a1b2c3d4' with actual order ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/orders/a1b2c3d4",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "orders", "a1b2c3d4"]
+        },
+        "description": "Delete an order by ID. Replace 'a1b2c3d4' with actual order ID. WARNING: This action cannot be undone."
+      },
+      "response": []
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "health"]
+        },
+        "description": "Check if API is running"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "orderId",
+      "value": ""
+    }
+  ]
+}
