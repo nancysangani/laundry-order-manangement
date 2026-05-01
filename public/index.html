@@ -835,6 +835,7 @@
 
       const customerName = document.getElementById('customerName').value;
       const phoneNumber = document.getElementById('phoneNumber').value;
+      const notes = document.getElementById('notes').value;
       const garmentRows = document.querySelectorAll('.garment-item');
 
       if (garmentRows.length === 0) {
@@ -851,7 +852,7 @@
         const response = await fetch(`${API_URL}/orders`, {
           method: 'POST',
           headers: getAuthHeaders(),
-          body: JSON.stringify({ customerName, phoneNumber, garments })
+          body: JSON.stringify({ customerName, phoneNumber, garments, notes: notes ? [notes] : [] })
         });
 
         if (response.status === 401) {

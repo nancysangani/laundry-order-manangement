@@ -117,7 +117,7 @@ app.post("/api/auth/login", async (req, res) => {
 // 1. CREATE ORDER
 app.post("/api/orders", authenticateToken, async (req, res) => {
   try {
-    const { customerName, phoneNumber, garments } = req.body;
+    const { customerName, phoneNumber, garments, notes } = req.body;
     const userId = req.user.id;
 
     // Validation
@@ -152,7 +152,7 @@ app.post("/api/orders", authenticateToken, async (req, res) => {
       estimatedDeliveryDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)
         .toISOString()
         .split("T")[0],
-      notes: [],
+      notes: notes || [],
     });
 
     await order.save();
